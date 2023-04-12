@@ -1,1 +1,6 @@
-print("Hello World!")
+from Procedures.OlimpyiadRepository import *
+
+Ol = OlimpyiadRepository()
+print(Ol.GetAllOlympiades())
+
+

@@ -1,5 +1,8 @@
 import pyodbc
-from ConnectionOption import *
+
+class ConnectionOption:
+    def __init__(self):
+        self.connection_string = 'DRIVER={SQL Server};SERVER=.;DATABASE=YearlyJob;TRUSTED_CONNECTION=TRUE;'
 
 def getConnection():
     Option = ConnectionOption()

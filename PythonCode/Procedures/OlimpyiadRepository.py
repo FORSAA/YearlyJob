@@ -1,26 +1,27 @@
-from ConnectionCreate import *
-
+from Procedures.ConnectionCreate import *
+from Procedures.Object.OlimpyiadObject import *
 class OlimpyiadRepository:
-    def __init__(self):
-        self.connection_string = 'DRIVER={SQL Server};SERVER=.;DATABASE=YearlyJob;TRUSTED_CONNECTION=TRUE;'
 
-    def GetAllOlimpyiades(self):
+    def GetOlimpyiad(self):
         connection = getConnection()
         cursor = connection.cursor()
-        result = cursor.execute("exec GetOlimpyiades").fetchall()
-        connection.close()
+        result = cursor.exec("GetOlimpyiad").fetchall()
         return result
 
     def GetOlimpyiadById(self, idInt):
         connection = getConnection()
         cursor = connection.cursor()
-        result = cursor.execute(f"exec GetOlimpyiadById {idInt}").fetchall()
-        connection.close()
+        result = cursor.exec(f"GetOlimpyiadById {idInt}").fetchall()
         return result
 
-    def GetOlimpyiadSubjects(self):
+    def GetOlimpyiadesBySubject(self, subjectIdInt):
         connection = getConnection()
         cursor = connection.cursor()
-        result = cursor.execute("exec GetOlimpyiadSubjects").fetchall()
-        connection.close()
+        result = cursor.exec(f"GetOlimpyiadesBySubject {subjectIdInt}").fetchall()
         return result
+
+    def AddOlimpyiad(self, olimpyiadClass):
+        connection = getConnection()
+        cursor = connection.cursor()
+        cursor.exec(f"exec AddOlimpyiad {olimpyiadClass.olimpyiadSubjectIdInt}, {olimpyiadClass.olimpyiadNameStr}, {olimpyiadClass.olimpyiadDateStr}")
+        cursor.commit()

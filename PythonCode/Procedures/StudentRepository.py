@@ -1,5 +1,5 @@
 from Procedures.ConnectionCreate import *
-from Procedures.Objects.StudentObject import *
+from Procedures.Object.StudentObject import *
 
 class StudentRepository:
 
